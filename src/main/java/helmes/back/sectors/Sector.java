@@ -17,4 +17,10 @@ public class Sector {
     private Integer key;
     private String label;
     private Integer parentSectorKey;
+
+    public Sector(Integer key, String label, Integer parentSectorKey) {
+        this.key = key;
+        this.label = label;
+        this.parentSectorKey = parentSectorKey;
+    }
 }

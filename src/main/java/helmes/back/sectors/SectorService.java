@@ -26,7 +26,7 @@ public class SectorService {
         return rootSectorDTOs;
     }
 
-    private List<SectorDTO> subSectorMapper(Integer parentKey) {
+    List<SectorDTO> subSectorMapper(Integer parentKey) {
         List<Sector> subSectors = sectorRepository.findAllByParentSectorKey(parentKey);
         if(subSectors.isEmpty()) return null;
 
