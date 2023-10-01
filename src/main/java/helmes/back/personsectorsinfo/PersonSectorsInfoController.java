@@ -1,7 +1,6 @@
 package helmes.back.personsectorsinfo;
 
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -11,8 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/person-sectors-info")
 public class PersonSectorsInfoController {
 
-    @Autowired
-    private PersonSectorsInfoService personSectorsInfoService;
+
+    private final PersonSectorsInfoService personSectorsInfoService;
+
+    public PersonSectorsInfoController(PersonSectorsInfoService personSectorsInfoService) {
+        this.personSectorsInfoService = personSectorsInfoService;
+    }
+
     @GetMapping
     public PersonSectorsInfoDTO getPersonSectorsInfo(@RequestHeader("SessionId") String sessionId) {
         return personSectorsInfoService.getPersonSectorsInfo(sessionId);

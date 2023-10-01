@@ -1,6 +1,5 @@
 package helmes.back.personsectorsinfo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -10,10 +9,13 @@ import java.util.Map;
 @Service
 public class PersonSectorsInfoService {
 
-    @Autowired
-    private PersonSectorsInfoRepository personSectorsInfoRepository;
-    @Autowired
-    private PersonInfoRepository personInfoRepository;
+    private final PersonSectorsInfoRepository personSectorsInfoRepository;
+    private final PersonInfoRepository personInfoRepository;
+
+    public PersonSectorsInfoService(PersonSectorsInfoRepository personSectorsInfoRepository, PersonInfoRepository personInfoRepository) {
+        this.personSectorsInfoRepository = personSectorsInfoRepository;
+        this.personInfoRepository = personInfoRepository;
+    }
 
     public PersonSectorsInfoDTO getPersonSectorsInfo(String sessionId) {
         PersonInfo personInfo = personInfoRepository.findBySessionId(sessionId);

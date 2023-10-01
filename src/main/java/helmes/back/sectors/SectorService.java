@@ -1,6 +1,5 @@
 package helmes.back.sectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,8 +8,11 @@ import java.util.List;
 @Service
 public class SectorService {
 
-    @Autowired
-    private SectorRepository sectorRepository;
+    private final SectorRepository sectorRepository;
+
+    public SectorService(SectorRepository sectorRepository) {
+        this.sectorRepository = sectorRepository;
+    }
 
     public List<SectorDTO> buildSectorHierarchy() {
         List<SectorDTO> rootSectorDTOs = new ArrayList<>();
